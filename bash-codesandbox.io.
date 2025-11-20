@@ -1,0 +1,2 @@
+cd client
+zip -r ../AIQueen_Client_CodeSandbox.zip .  # contains package.json and src/public
