@@ -1,0 +1,11 @@
+# server-java/Dockerfile
+FROM maven:3.8.7-openjdk-17 AS build
+WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn -B -DskipTests package
+
+FROM eclipse-temurin:17-jre-alpine
+COPY --from=build /app/target/aiqueen-superior-1.0.0.jar /opt/app/aiqueen.jar
+EXPOSE 8082
+ENTRYPOINT ["java","-jar","/opt/app/aiqueen.jar"]
