@@ -1,0 +1,2 @@
+# from project root
+zip -r AIQueen_Superior_GitHub.zip server-java server-node client gas docker-compose.yml README.md .env.example
