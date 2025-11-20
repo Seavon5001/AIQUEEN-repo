@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  java-backend:
+    build: ./server-java
+    environment:
+      - STRIPE_KEY=${STRIPE_KEY}
+      - TWILIO_SID=${TWILIO_SID}
+      - TWILIO_TOKEN=${TWILIO_TOKEN}
+    ports:
+      - "8082:8082"
+
+  node-media:
+    build: ./server-node
+    ports:
+      - "8081:8081"
+    environment:
+      - BASE_URL=${BASE_URL}
+
+  client:
+    build: ./client
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=${BASE_URL}
